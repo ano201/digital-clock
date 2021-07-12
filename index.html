@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>HTML Digital Clock</title>
+<style>
+@font-face{
+font-family:dgc;
+src:url(RADIOLAND.TTF);
+}
+body{
+background: url(Island.webp) no-repeat;
+background-origin:fit;
+background-size:cover;
+}
+.out{
+background:rgba(128,128,128,0.4);
+width:70%;
+margin:0 auto;
+margin-top:30%;
+}
+.in{
+border:10px solid;
+border-color:red;
+}
+#dc{
+color:red;
+font-size:35px;
+font-family:dgc;
+text-align:center;
+margin-top:5%;
+}
+</style>
+</head>
+<body onload="d();">
+<div class="out" >
+<div class="in" >
+<div id="dc">
+</div>
+</div>
+</div>
+<script>
+function d() {
+var dt = new Date();
+var hrs = dt.getHours();
+var min = dt.getMinutes();
+var sec = dt.getSeconds();
+
+min = Ticking(min);
+sec = Ticking(sec);
+document.getElementById('dc').innerHTML = hrs + ":" + min+":"+sec;
+var time
+time = setInterval('d()', 1000);
+}
+
+function Ticking(ticVal) {
+if (ticVal < 10) {
+ticVal = "0" + ticVal;
+}
+return ticVal;
+}
+</script>
+</body>
+</html>
